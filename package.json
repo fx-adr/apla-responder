@@ -1,0 +1,20 @@
+{
+  "name": "apla-responder",
+  "version": "0.0.1",
+  "description": "Helper module to build Alexa APLA Documents in handlers, in Node.",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "repository": "https://fx-adr@github.com/fx-adr/apla-responder.git",
+  "author": "Adam Rann <adam@fxdigital.uk>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start:dev": "nodemon"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.26",
+    "nodemon": "^2.0.4",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  }
+}
