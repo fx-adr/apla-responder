@@ -8,6 +8,12 @@
   "author": "Adam Rann <adam@fxdigital.uk>",
   "license": "MIT",
   "private": false,
+  "jest": {
+    "verbose": true,
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
   "scripts": {
     "start:dev": "nodemon"
   },
@@ -17,9 +23,12 @@
     "@typescript-eslint/parser": "^3.7.0",
     "eslint": "^7.5.0",
     "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.22.0",
+    "eslint-watch": "^7.0.0",
     "jest": "^26.1.0",
     "nodemon": "^2.0.4",
+    "prettier": "2.0.5",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7"
   }
