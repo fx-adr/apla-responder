@@ -15,7 +15,8 @@
     ]
   },
   "scripts": {
-    "start:dev": "nodemon"
+    "start:dev": "nodemon",
+    "test": "jest --passWithNoTests"
   },
   "devDependencies": {
     "@types/node": "^14.0.26",
