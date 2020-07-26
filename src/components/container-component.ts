@@ -3,12 +3,22 @@ abstract class ContainerComponent extends AbstractComponent {
 
   toObject(): InflatedComponent {
     const obj = super.toObject();
-    obj.items = [];
+    const inflatedItems: InflatedComponent[] = [];
 
     this.items.forEach((component) => {
-      obj.items.push(component.toObject());
+        inflatedItems.push(component.toObject());
     });
 
+    obj.items = inflatedItems;
+
     return obj;
+  }
+
+  addItem(item : AbstractComponent) {
+    this.items.push(item);
+  }
+
+  removeAll() {
+      this.items = [];
   }
 }

@@ -12,11 +12,18 @@
     "verbose": true,
     "testPathIgnorePatterns": [
       "/node_modules/"
-    ]
+    ],
+    "clearMocks": true,
+    "coverageDirectory": "coverage",
+    "coverageProvider": "v8",
+    "testEnvironment": "node",
+    "coverageReporters": ["json", "html"],
+    "collectCoverage": true
   },
   "scripts": {
     "start:dev": "nodemon",
-    "test": "jest --passWithNoTests"
+    "test": "jest --passWithNoTests",
+    "build": "tsc"
   },
   "devDependencies": {
     "@types/node": "^14.0.26",

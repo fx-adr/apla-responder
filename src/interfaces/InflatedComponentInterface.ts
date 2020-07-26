@@ -8,5 +8,6 @@ interface InflatedComponent {
   content?: String,
   contentType?: String,
   items?: InflatedComponent[],
-  source?: String
+  source?: String,
+  strategy?: String
 }
