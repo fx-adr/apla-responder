@@ -28,11 +28,11 @@ class Speech extends AbstractComponent {
     }
   }
 
-  toObject() {
-    return {
-      type: this.type,
-      content: this.content,
-      contentType: this.contentType,
-    };
+  toObject(): InflatedComponent {
+    const obj = super.toObject();
+    obj.content = this.content;
+    obj.contentType = this.contentType;
+
+    return obj;
   }
 }

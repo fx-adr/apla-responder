@@ -11,10 +11,9 @@ class Silence extends AbstractComponent {
         this.duration = duration;
     }
 
-    toObject() {
-        return {
-            type: this.type,
-            duration: this.duration
-        }
+    toObject(): InflatedComponent {
+        const obj = super.toObject();
+        obj.duration = this.duration;
+        return obj;
     }
 }
