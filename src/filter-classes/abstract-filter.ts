@@ -23,6 +23,10 @@ export default abstract class Filter {
       obj.description = this.description;
     }
 
+    if (true === obj.when || "true" === obj.when) {
+      delete obj.when;
+    }
+
     return obj;
   }
 }

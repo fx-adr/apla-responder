@@ -30,4 +30,26 @@ describe('Volume filter', () => {
         expect(vol3.toObject().amount).toEqual(0.25);
         expect(vol4.toObject().amount).toEqual("48%");
     });
+
+    test("Structure check", () => {
+        expect(vol3.toObject()).toEqual({
+            type: "Volume",
+            amount: 0.25
+        })
+
+        expect(vol4.toObject()).toEqual({
+          type: "Volume",
+          amount: "48%",
+        });
+    });
+
+    test("Keeps description", () => {
+        const description = "This is a test description.";
+        vol3.setDescription(description);
+        expect(vol3.toObject()).toEqual({
+            type: "Volume",
+            amount: 0.25,
+            description
+        });
+    });
 });
