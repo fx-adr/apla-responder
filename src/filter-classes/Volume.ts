@@ -1,15 +1,18 @@
-class Volume extends Filter {
-    type = "Volume"
-    amount: Number|String = 1;
+import InflatedFilter from "../interfaces/InflatedFilterInterface";
+import Filter from "./abstract-filter";
 
-    constructor(amount:Number|String = 1) {
-        super();
-        this.amount = amount;
-    }
+export default class Volume extends Filter {
+  type = "Volume";
+  amount: Number | String = 1;
 
-    toObject(): InflatedFilter {
-        const obj = super.toObject();
-        obj.amount = this.amount;
-        return obj;
-    }
+  constructor(amount: Number | String = 1) {
+    super();
+    this.amount = amount;
+  }
+
+  toObject(): InflatedFilter {
+    const obj = super.toObject();
+    obj.amount = this.amount;
+    return obj;
+  }
 }

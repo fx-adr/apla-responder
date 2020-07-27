@@ -2,7 +2,7 @@
 /**
  * An error thrown when arguments of a function are not valid.
  */
-class InvalidArgumentError extends Error {
+export default class InvalidArgumentError extends Error {
   constructor(message?: string) {
     super(message);
     // see: typescriptlang.org/docs/handbook/release-notes/typescript-2-2.html

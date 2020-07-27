@@ -1,20 +1,23 @@
-class Trim extends Filter {
-    type = "Trim"
+import InflatedFilter from "../interfaces/InflatedFilterInterface";
+import Filter from "./abstract-filter";
 
-    start: Number = 0;
-    end: Number|null = null;
+export default class Trim extends Filter {
+  type = "Trim";
 
-    constructor(start:Number = 0, end: Number|null = null) {
-        super();
-        this.start = start;
-        this.end = end;
-    }
+  start: Number = 0;
+  end: Number | null = null;
 
-    toObject(): InflatedFilter {
-        const obj = super.toObject();
-        obj.start = this.start;
-        obj.end = this.end;
+  constructor(start: Number = 0, end: Number | null = null) {
+    super();
+    this.start = start;
+    this.end = end;
+  }
 
-        return obj;
-    }
+  toObject(): InflatedFilter {
+    const obj = super.toObject();
+    obj.start = this.start;
+    obj.end = this.end;
+
+    return obj;
+  }
 }
