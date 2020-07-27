@@ -1,4 +1,6 @@
-class Audio extends AbstractComponent {
+import InflatedComponent from "../interfaces/InflatedComponentInterface";
+import AbstractComponent from "./abstract-component";
+export default class Audio extends AbstractComponent {
   type: string = "Audio";
   private sourceUrl: string = "";
 

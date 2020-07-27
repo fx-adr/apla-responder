@@ -1,4 +1,7 @@
-abstract class ContainerComponent extends AbstractComponent {
+import InflatedComponent from "../interfaces/InflatedComponentInterface";
+import AbstractComponent from "./abstract-component";
+
+export default abstract class ContainerComponent extends AbstractComponent {
   protected items: AbstractComponent[] = [];
 
   toObject(): InflatedComponent {
@@ -6,7 +9,7 @@ abstract class ContainerComponent extends AbstractComponent {
     const inflatedItems: InflatedComponent[] = [];
 
     this.items.forEach((component) => {
-        inflatedItems.push(component.toObject());
+      inflatedItems.push(component.toObject());
     });
 
     obj.items = inflatedItems;
@@ -14,11 +17,11 @@ abstract class ContainerComponent extends AbstractComponent {
     return obj;
   }
 
-  addItem(item : AbstractComponent) {
+  addItem(item: AbstractComponent) {
     this.items.push(item);
   }
 
   removeAll() {
-      this.items = [];
+    this.items = [];
   }
 }

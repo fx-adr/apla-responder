@@ -1,4 +1,8 @@
-class Selector extends ContainerComponent {
+import InflatedComponent from "../interfaces/InflatedComponentInterface";
+import InvalidArgumentError from "../errors/InvalidArgumentError";
+import ContainerComponent from "./container-component";
+
+export default class Selector extends ContainerComponent {
   type = "Selector";
   strategy: String = "normal";
 

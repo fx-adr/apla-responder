@@ -1,4 +1,8 @@
-class Speech extends AbstractComponent {
+import InflatedComponent from "../interfaces/InflatedComponentInterface";
+import InvalidArgumentError from "../errors/InvalidArgumentError";
+import AbstractComponent from "./abstract-component";
+
+export default class Speech extends AbstractComponent {
   type: string = "Speech";
   private content: String = "";
   private contentType: String = "PlainText";
@@ -16,7 +20,7 @@ class Speech extends AbstractComponent {
     if (this.contentTypes.includes(contentType)) {
       this.contentType = contentType;
     } else {
-        throw new InvalidArgumentError("Content type was not a valid argument.");
+      throw new InvalidArgumentError("Content type was not a valid argument.");
     }
   }
 
@@ -24,7 +28,7 @@ class Speech extends AbstractComponent {
     if (this.contentTypes.includes(contentType)) {
       this.contentType = contentType;
     } else {
-        throw new InvalidArgumentError("Content type was not a valid argument.");
+      throw new InvalidArgumentError("Content type was not a valid argument.");
     }
   }
 
