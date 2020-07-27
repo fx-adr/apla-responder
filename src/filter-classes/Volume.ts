@@ -13,6 +13,15 @@ export default class Volume extends Filter {
   toObject(): InflatedFilter {
     const obj = super.toObject();
     obj.amount = this.amount;
+
+    if("100%" == obj.amount) {
+      obj.amount = 1;
+    }
+
+    if ("0%" == obj.amount) {
+      obj.amount = 0;
+    }
+
     return obj;
   }
 }
