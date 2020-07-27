@@ -1,20 +1,19 @@
-import Generator from "./generator/generator";
+import Generator from "./generator/Generator";
 import Silence from "./components/Silence";
 import Speech from "./components/Speech";
+import Audio from "./components/Audio";
 import Mixer from "./components/Mixer";
+import Sequencer from "./components/Sequencer";
+import Selector from "./components/Selector";
 
-const generator = new Generator();
-
-generator.playAudio("https://google.com");
-generator.speak("<speak>Hello there!</speak>", "SSML");
-generator.silence(500);
-generator.speak("Welcome to the skill!");
-
-generator.useMixer([new Silence(400), new Speech("hi there")]);
-
-const mixer = new Mixer();
-mixer.addItem(new Silence(200));
-mixer.setDescription("Lol");
-generator.useMixer(mixer);
-
-console.log(generator.getDirective().document.mainTemplate.items[0].items);
+module.exports = {
+    Components: {
+        Silence,
+        Speech,
+        Audio,
+        Mixer,
+        Selector,
+        Sequencer
+    },
+    AudioResponse: Generator
+}
