@@ -4,7 +4,7 @@ import Speech from "./Speech";
 
 const type = "Selector";
 
-describe("Silence component class", () => {
+describe("Selector component class", () => {
   const selector = new Selector();
 
   test("type is " + type, () => {
