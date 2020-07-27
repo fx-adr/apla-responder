@@ -1,5 +1,5 @@
 {
-  "name": "@fx-digital/apla-responder",
+  "name": "apla-responder",
   "version": "0.0.1",
   "description": "Helper module to build Alexa APLA Documents in handlers, in Node programmatically.",
   "main": "build/index.js",
@@ -18,7 +18,8 @@
   "scripts": {
     "start:dev": "nodemon",
     "test": "jest --passWithNoTests",
-    "build": "tsc"
+    "build": "tsc",
+    "publish": "yarn build && yarn test && npm publish --access=public"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
