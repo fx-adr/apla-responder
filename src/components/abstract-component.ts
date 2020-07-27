@@ -12,12 +12,21 @@ export default abstract class AbstractComponent {
   }
 
   toObject(): InflatedComponent {
-    const obj = {
+    const obj: InflatedComponent = {
       type: this.type,
-      description: this.description ?? "",
-      id: this.id ?? "",
-      bind: this.bind ?? [],
     };
+
+    if(this.id) {
+      obj.id = this.id;
+    }
+
+    if (this.description) {
+      obj.description = this.description;
+    }
+
+    if (this.bind && this.bind.length > 0) {
+      obj.bind = this.bind;
+    }
 
     return obj;
   }

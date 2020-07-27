@@ -1,5 +1,6 @@
 import InflatedComponent from "../interfaces/InflatedComponentInterface";
 import AbstractComponent from "./abstract-component";
+import InvalidArgumentError from "../errors/InvalidArgumentError";
 
 export default class Silence extends AbstractComponent {
   type: string = "Silence";
@@ -11,6 +12,11 @@ export default class Silence extends AbstractComponent {
    */
   constructor(duration: Number) {
     super();
+
+    if(duration < 0) {
+      throw new InvalidArgumentError("Duration cannot be negative.");
+    }
+
     this.duration = duration;
   }
 
