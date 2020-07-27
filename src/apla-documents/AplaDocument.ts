@@ -16,6 +16,10 @@ export default class AplaDocument {
       this.items = [];
   }
 
+  getRootItem() {
+      return this.items[0];
+  }
+
   addItem(item: AbstractComponent) {
       this.items.push(item);
   }
