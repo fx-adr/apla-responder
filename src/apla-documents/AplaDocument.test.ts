@@ -58,15 +58,11 @@ describe("APLA Document", () => {
         });
     });
 
-    test("Keeps token and description", () => {
-        const token = "this is a token";
+    test("Keeps description", () => {
         const description = "description";
-        aplaDocument.setToken(token);
         aplaDocument.setDescription(description);
 
-        expect(aplaDocument.toObject().token).toBeDefined();
         expect(aplaDocument.toObject().description).toBeDefined();
-        expect(aplaDocument.toObject().token).toEqual(token);
         expect(aplaDocument.toObject().description).toEqual(description);
     });
 
