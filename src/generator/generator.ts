@@ -7,6 +7,7 @@ import Audio from "../components/Audio";
 import Speech from "../components/Speech";
 import Silence from "../components/Silence";
 import Mixer from "../components/Mixer";
+import Selector from "../components/Selector";
 
 export default class Generator {
   protected aplaDocument: AplaDocument = new AplaDocument();
@@ -68,6 +69,36 @@ export default class Generator {
       });
       this.addItem(mixer);
     }
+  }
+
+  useSelector(selectorItems: Selector): void;
+  useSelector(selectorItems: Array<AbstractComponent>, strategy?: String): void;
+  useSelector(selectorItems : Array<AbstractComponent>|Selector, strategy: String = "normal"): void {
+      if(selectorItems instanceof Selector) {
+        this.addItem(selectorItems);
+      } else {
+          const selector = new Selector(strategy);
+          selectorItems.forEach(item => {
+            selector.addItem(item);
+          });
+
+          this.addItem(selector);
+      }
+  }
+
+  useSequencer(sequencerItems: Sequencer): void;
+  useSequencer(sequencerItems: Array<AbstractComponent>): void;
+  useSequencer(sequencerItems : Array<AbstractComponent>|Sequencer): void {
+      if(sequencerItems instanceof Sequencer) {
+        this.addItem(sequencerItems);
+      } else {
+          const sequencer = new Sequencer();
+          sequencerItems.forEach(item => {
+            sequencer.addItem(item);
+          });
+
+          this.addItem(sequencer);
+      }
   }
 
   protected addItem(item: AbstractComponent) {
