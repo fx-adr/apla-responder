@@ -1,25 +1,25 @@
-import FadeIn from "./FadeIn";
+import FadeOut from "./FadeOut";
 import InvalidArgumentError from "../errors/InvalidArgumentError";
 
-describe('FadeIn: Should set correct duration.', () => {
+describe('FadeOut: Should set correct duration.', () => {
     const durations = [
         0, 1000, 3333
     ];
 
     durations.forEach((duration) => {
         test("Duration - " + duration + "ms", () => {
-            const fadeIn = new FadeIn(duration);
+            const fadeIn = new FadeOut(duration);
             expect(fadeIn.toObject().duration).toBe(duration);
         });
     });
 
     test("And throw error when negative value", () => {
         expect(() => {
-            new FadeIn(-1);
+            new FadeOut(-1);
         }).toThrowError(InvalidArgumentError);
 
         expect(() => {
-          new FadeIn(-1000);
+          new FadeOut(-1000);
         }).toThrowError(InvalidArgumentError);
     });
 });
