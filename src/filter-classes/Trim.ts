@@ -16,7 +16,10 @@ export default class Trim extends Filter {
   toObject(): InflatedFilter {
     const obj = super.toObject();
     obj.start = this.start;
-    obj.end = this.end;
+
+    if(this.end) {
+      obj.end = this.end;
+    }
 
     return obj;
   }

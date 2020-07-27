@@ -10,6 +10,7 @@ describe('FadeOut: Should set correct duration.', () => {
         test("Duration - " + duration + "ms", () => {
             const fadeIn = new FadeOut(duration);
             expect(fadeIn.toObject().duration).toBe(duration);
+            expect(fadeIn.toObject().type).toEqual("FadeOut");
         });
     });
 
