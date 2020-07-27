@@ -2,17 +2,11 @@ import { library } from "../library";
 import AbstractComponent from "../components/abstract-component";
 import InflatedAplaDocument from "../interfaces/InflatedAplaDocumentInterface";
 
-
 export default class AplaDocument {
-  protected token: String = "";
   protected type: String = library.documentType;
   protected version: String = library.documentVersion;
   protected description: String|null = null;
   protected items: AbstractComponent[] = [];
-
-  setToken(token: String) {
-    this.token = token;
-  }
 
   setDescription(description: String) {
       this.description = description;
@@ -37,10 +31,6 @@ export default class AplaDocument {
 
     if(this.description) {
         doc.description = this.description;
-    }
-
-    if (this.token) {
-      doc.token = this.token;
     }
 
     if(0 == this.items.length) {
