@@ -1,15 +1,15 @@
 import InflatedFilter from "../interfaces/InflatedFilterInterface";
 
 export default abstract class Filter {
-  protected abstract type: String;
-  protected description: String = "";
-  protected when: String | true | false = true;
+  protected abstract type: string;
+  protected description: string = "";
+  protected when: string | true | false = true;
 
-  setDescription(description: String) {
+  setDescription(description: string) {
     this.description = description;
   }
 
-  setWhen(when: String | true | false) {
+  setWhen(when: string | true | false) {
     this.when = when;
   }
 

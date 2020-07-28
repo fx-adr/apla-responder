@@ -4,10 +4,10 @@ import Filter from "./abstract-filter";
 export default class Trim extends Filter {
   type = "Trim";
 
-  start: Number = 0;
-  end: Number | null = null;
+  start: number = 0;
+  end: number | null = null;
 
-  constructor(start: Number = 0, end: Number | null = null) {
+  constructor(start: number = 0, end: number | null = null) {
     super();
     this.start = start;
     this.end = end;

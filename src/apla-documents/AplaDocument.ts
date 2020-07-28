@@ -3,12 +3,12 @@ import AbstractComponent from "../components/abstract-component";
 import InflatedAplaDocument from "../interfaces/InflatedAplaDocumentInterface";
 
 export default class AplaDocument {
-  protected type: String = library.documentType;
-  protected version: String = library.documentVersion;
-  protected description: String|null = null;
+  protected type: string = library.documentType;
+  protected version: string = library.documentVersion;
+  protected description: string|null = null;
   protected items: AbstractComponent[] = [];
 
-  setDescription(description: String) {
+  setDescription(description: string) {
       this.description = description;
   }
 

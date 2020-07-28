@@ -1,10 +1,10 @@
 import InflatedComponent from "./InflatedComponentInterface";
 
 export default interface InflatedAplaDocument {
-  version: String,
-  type: String,
-  description?: String,
-  token?: String,
+  version: string,
+  type: string,
+  description?: string,
+  token?: string,
   mainTemplate: {
     items: InflatedComponent[]
   }

@@ -1,3 +1,6 @@
+import type { HandlerInput, ResponseBuilder }  from "ask-sdk-core";
+import type { Response, interfaces } from "ask-sdk-model";
+
 import AplaDocument from "../apla-documents/AplaDocument";
 import AplaRenderDocument from "../interfaces/AplaRenderDocumentInterface";
 import { library } from "../library";
@@ -9,13 +12,25 @@ import Silence from "../components/Silence";
 import Mixer from "../components/Mixer";
 import Selector from "../components/Selector";
 
+/**
+ * Audio Response generator, use this to build up a sounscape of audio and speech
+ */
 export default class Generator {
   protected aplaDocument: AplaDocument = new AplaDocument();
-  protected token: String | null = null;
+  protected token: string | null = null;
+  protected askResponseBuilder: ResponseBuilder;
+  protected handlerInput: HandlerInput;
 
-  constructor(token?: String) {
+  constructor(handlerInput: HandlerInput, token?: string) {
+    this.handlerInput = handlerInput;
+    this.askResponseBuilder = this.handlerInput.responseBuilder;
+
     if (token) {
       this.token = token;
+    } else {
+      // use an opaque token, from the requestId
+      this.token =
+        handlerInput.requestEnvelope.request.requestId;
     }
 
     // add root sequencer element
@@ -43,9 +58,12 @@ export default class Generator {
     }
   }
 
-  speak(phrase: string, format?: String): void;
+  speak(phrase: string, format?: string): void;
   speak(phrase: Speech): void;
-  speak(phrase: String | Speech, format: String = "PlainText"): void {
+  speak(
+    phrase: string | Speech,
+    format: string = "PlainText"
+  ): void {
     if (phrase instanceof Speech) {
       this.addItem(phrase);
     } else {
@@ -53,7 +71,7 @@ export default class Generator {
     }
   }
 
-  silence(duration: Number) {
+  silence(duration: number) {
     this.addItem(new Silence(duration));
   }
 
@@ -72,33 +90,41 @@ export default class Generator {
   }
 
   useSelector(selectorItems: Selector): void;
-  useSelector(selectorItems: Array<AbstractComponent>, strategy?: String): void;
-  useSelector(selectorItems : Array<AbstractComponent>|Selector, strategy: String = "normal"): void {
-      if(selectorItems instanceof Selector) {
-        this.addItem(selectorItems);
-      } else {
-          const selector = new Selector(strategy);
-          selectorItems.forEach(item => {
-            selector.addItem(item);
-          });
+  useSelector(
+    selectorItems: Array<AbstractComponent>,
+    strategy?: string
+  ): void;
+  useSelector(
+    selectorItems: Array<AbstractComponent> | Selector,
+    strategy: string = "normal"
+  ): void {
+    if (selectorItems instanceof Selector) {
+      this.addItem(selectorItems);
+    } else {
+      const selector = new Selector(strategy);
+      selectorItems.forEach((item) => {
+        selector.addItem(item);
+      });
 
-          this.addItem(selector);
-      }
+      this.addItem(selector);
+    }
   }
 
   useSequencer(sequencerItems: Sequencer): void;
   useSequencer(sequencerItems: Array<AbstractComponent>): void;
-  useSequencer(sequencerItems : Array<AbstractComponent>|Sequencer): void {
-      if(sequencerItems instanceof Sequencer) {
-        this.addItem(sequencerItems);
-      } else {
-          const sequencer = new Sequencer();
-          sequencerItems.forEach(item => {
-            sequencer.addItem(item);
-          });
+  useSequencer(
+    sequencerItems: Array<AbstractComponent> | Sequencer
+  ): void {
+    if (sequencerItems instanceof Sequencer) {
+      this.addItem(sequencerItems);
+    } else {
+      const sequencer = new Sequencer();
+      sequencerItems.forEach((item) => {
+        sequencer.addItem(item);
+      });
 
-          this.addItem(sequencer);
-      }
+      this.addItem(sequencer);
+    }
   }
 
   protected addItem(item: AbstractComponent) {
@@ -113,7 +139,11 @@ export default class Generator {
     }
   }
 
-  getDirective(): AplaRenderDocument {
+  withReprompt(content: string) {
+    this.askResponseBuilder = this.askResponseBuilder.reprompt(content);
+  }
+
+  protected getInternalDirective(): AplaRenderDocument {
     const datasources = {};
 
     const directive: AplaRenderDocument = {
@@ -127,5 +157,27 @@ export default class Generator {
     }
 
     return directive;
+  }
+
+  protected getDirective(): interfaces.alexa.presentation.apla.RenderDocumentDirective {
+    const aplaRenderDocumentDirective = this.getInternalDirective();
+
+    const d: interfaces.alexa.presentation.apla.RenderDocumentDirective = {
+      type: "Alexa.Presentation.APLA.RenderDocument",
+      token: aplaRenderDocumentDirective.token,
+      datasources: aplaRenderDocumentDirective.datasources,
+      document: aplaRenderDocumentDirective.document
+    };
+
+    return d;
+  }
+
+  getResponseBuilder(): ResponseBuilder {
+    this.askResponseBuilder.addDirective(this.getDirective());
+    return this.askResponseBuilder;
+  }
+
+  getResponse(): Response {
+    return this.getResponseBuilder().getResponse();
   }
 }

@@ -1,15 +1,15 @@
 import ComponentBindVal from "./ComponentBindValInterface";
 
 export default interface InflatedComponent {
-  type: String;
-  description?: String;
-  id?: String;
-  when?: String | true | false;
+  type: string;
+  description?: string;
+  id?: string;
+  when?: string | true | false;
   bind?: ComponentBindVal[];
-  duration?: Number;
-  content?: String;
-  contentType?: String;
+  duration?: number;
+  content?: string;
+  contentType?: string;
   items?: InflatedComponent[];
-  source?: String;
-  strategy?: String;
+  source?: string;
+  strategy?: string;
 }

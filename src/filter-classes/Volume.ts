@@ -3,9 +3,9 @@ import Filter from "./abstract-filter";
 
 export default class Volume extends Filter {
   type = "Volume";
-  amount: Number | String = 1;
+  amount: number | string = 1;
 
-  constructor(amount: Number | String = 1) {
+  constructor(amount: number | string = 1) {
     super();
     this.amount = amount;
   }

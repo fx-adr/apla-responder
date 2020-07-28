@@ -1,9 +1,9 @@
 export default interface InflatedFilter {
-  type: String;
-  description?: String;
-  when?: String | true | false;
-  end?: Number | null;
-  start?: Number;
-  duration?: Number;
-  amount?: String | Number;
+  type: string;
+  description?: string;
+  when?: string | true | false;
+  end?: number | null;
+  start?: number;
+  duration?: number;
+  amount?: string | number;
 }

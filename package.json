@@ -5,6 +5,7 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "repository": "https://fx-adr@github.com/fx-adr/apla-responder.git",
+  "homepage": "https://www.notion.so/APLA-Responder-7b524f8bb1be4696bfb45364d91aa310",
   "author": "Adam Rann <adam@fxdigital.uk>",
   "license": "MIT",
   "private": false,
@@ -15,6 +16,17 @@
       "^.+\\.tsx?$": "ts-jest"
     }
   },
+  "keywords": [
+    "APLA",
+    "soundscape",
+    "Alexa",
+    "Alexa Presentation",
+    "Multimodal response",
+    "Alexa.Presentation.APLA.RenderDocument",
+    "SSML",
+    "audio",
+    "music"
+  ],
   "scripts": {
     "start:dev": "nodemon",
     "test": "jest --passWithNoTests",
@@ -45,5 +57,9 @@
     "ts-jest": "^26.1.3",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "ask-sdk-core": "^2.9.0",
+    "ask-sdk-model": "^1.29.0"
   }
 }

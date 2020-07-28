@@ -4,13 +4,13 @@ import InvalidArgumentError from "../errors/InvalidArgumentError";
 
 export default class Silence extends AbstractComponent {
   type: string = "Silence";
-  private duration: Number = 0;
+  private duration: number = 0;
 
   /**
    * Add the sound of silence
    * @param duration Number of milliseconds for there to be silence.
    */
-  constructor(duration: Number) {
+  constructor(duration: number) {
     super();
 
     if(duration < 0) {

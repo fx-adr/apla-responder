@@ -4,16 +4,16 @@ import ContainerComponent from "./container-component";
 
 export default class Selector extends ContainerComponent {
   type = "Selector";
-  strategy: String = "normal";
+  strategy: string = "normal";
 
-  protected strategies: String[] = [
+  protected strategies: string[] = [
     "normal",
     "randomItem",
     "randomData",
     "randomItemRandomData",
   ];
 
-  constructor(strategy: String = "normal") {
+  constructor(strategy: string = "normal") {
     super();
     if (this.strategies.includes(strategy)) {
       this.strategy = strategy;

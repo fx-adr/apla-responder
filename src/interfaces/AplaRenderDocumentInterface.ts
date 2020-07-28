@@ -1,8 +1,8 @@
 import InflatedAplaDocument from "./InflatedAplaDocumentInterface";
 
 export default interface AplaRenderDocument {
-  type: String;
-  token?: String;
+  type: string;
+  token?: string;
   document: InflatedAplaDocument
   datasources: object
 }
