@@ -4,17 +4,17 @@ import AbstractComponent from "./abstract-component";
 
 export default class Speech extends AbstractComponent {
   type: string = "Speech";
-  private content: String = "";
-  private contentType: String = "PlainText";
+  private content: string = "";
+  private contentType: string = "PlainText";
 
-  private contentTypes: String[] = ["PlainText", "SSML"];
+  private contentTypes: string[] = ["PlainText", "SSML"];
 
   /**
    * Add Alexa speech to speak in the response.
    * @param content What to say
    * @param contentType What format it's in.
    */
-  constructor(content: String, contentType: String = "PlainText") {
+  constructor(content: string, contentType: string = "PlainText") {
     super();
     this.content = content;
     if (this.contentTypes.includes(contentType)) {
@@ -24,7 +24,7 @@ export default class Speech extends AbstractComponent {
     }
   }
 
-  setContentType(contentType: String) {
+  setContentType(contentType: string) {
     if (this.contentTypes.includes(contentType)) {
       this.contentType = contentType;
     } else {

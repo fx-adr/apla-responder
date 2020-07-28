@@ -1,5 +1,5 @@
 export default interface LibrarySettings {
-  documentVersion: String;
-  documentType: String;
-  renderAplaDocumentDirectiveType: String;
+  documentVersion: string;
+  documentType: string;
+  renderAplaDocumentDirectiveType: string;
 }
