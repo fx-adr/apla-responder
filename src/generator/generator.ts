@@ -1,5 +1,5 @@
 import type { HandlerInput, ResponseBuilder }  from "ask-sdk-core";
-import Model from "ask-sdk-model";
+import type { Response, interfaces } from "ask-sdk-model";
 
 import AplaDocument from "../apla-documents/AplaDocument";
 import AplaRenderDocument from "../interfaces/AplaRenderDocumentInterface";
@@ -155,12 +155,14 @@ export default class Generator {
     return directive;
   }
 
-  protected getDirective(): Model.interfaces.alexa.presentation.apla.RenderDocumentDirective {
+  protected getDirective(): interfaces.alexa.presentation.apla.RenderDocumentDirective {
     const aplaRenderDocumentDirective = this.getInternalDirective();
 
-    const d: Model.interfaces.alexa.presentation.apla.RenderDocumentDirective = {
+    const d: interfaces.alexa.presentation.apla.RenderDocumentDirective = {
       type: "Alexa.Presentation.APLA.RenderDocument",
       token: aplaRenderDocumentDirective.token,
+      datasources: aplaRenderDocumentDirective.datasources,
+      document: aplaRenderDocumentDirective.document
     };
 
     return d;
@@ -171,7 +173,7 @@ export default class Generator {
     return this.askResponseBuilder;
   }
 
-  getResponse(): Model.Response {
+  getResponse(): Response {
     return this.getResponseBuilder().getResponse();
   }
 }
