@@ -15,6 +15,9 @@
       "^.+\\.tsx?$": "ts-jest"
     }
   },
+  "keywords": [
+    "APLA", "soundscape", "Alexa", "Alexa Presentation", "Multimodal response", "Alexa.Presentation.APLA.RenderDocument", "SSML", "audio", "music"
+  ],
   "scripts": {
     "start:dev": "nodemon",
     "test": "jest --passWithNoTests",
