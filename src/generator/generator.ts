@@ -1,3 +1,4 @@
+import type { HandlerInput, ResponseBuilder}  from "ask-sdk-core";
 import AplaDocument from "../apla-documents/AplaDocument";
 import AplaRenderDocument from "../interfaces/AplaRenderDocumentInterface";
 import { library } from "../library";
@@ -12,10 +13,18 @@ import Selector from "../components/Selector";
 export default class Generator {
   protected aplaDocument: AplaDocument = new AplaDocument();
   protected token: String | null = null;
+  protected askResponseBuilder: ResponseBuilder;
+  protected handlerInput: HandlerInput;
 
-  constructor(token?: String) {
+  constructor(handlerInput: HandlerInput, token?: String) {
+    this.handlerInput = handlerInput;
+    this.askResponseBuilder = this.handlerInput.responseBuilder;
+
     if (token) {
       this.token = token;
+    } else {
+      // use an opaque token, from the requestId
+      this.token = handlerInput.requestEnvelope.request.requestId;
     }
 
     // add root sequencer element

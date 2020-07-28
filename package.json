@@ -59,6 +59,7 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
-    "ask-sdk-core": "^2.9.0"
+    "ask-sdk-core": "^2.9.0",
+    "ask-sdk-model": "^1.29.0"
   }
 }
