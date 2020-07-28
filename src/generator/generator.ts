@@ -71,7 +71,7 @@ export default class Generator {
     }
   }
 
-  silence(duration: Number) {
+  silence(duration: number) {
     this.addItem(new Silence(duration));
   }
 

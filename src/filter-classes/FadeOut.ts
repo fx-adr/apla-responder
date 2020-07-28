@@ -3,9 +3,9 @@ import InvalidArgumentError from "../errors/InvalidArgumentError";
 import Filter from "./abstract-filter";
 export default class FadeOut extends Filter {
   type = "FadeOut";
-  duration: Number = 0;
+  duration: number = 0;
 
-  constructor(duration: Number = 0) {
+  constructor(duration: number = 0) {
     super();
     if (duration < 0) {
       throw new InvalidArgumentError("duration must be positive");

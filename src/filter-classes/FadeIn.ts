@@ -5,9 +5,9 @@ import InvalidArgumentError from "../errors/InvalidArgumentError";
 
 export default class FadeIn extends Filter {
   type = "FadeIn";
-  duration: Number = 0;
+  duration: number = 0;
 
-  constructor(duration: Number = 0) {
+  constructor(duration: number = 0) {
     super();
     if (duration < 0) {
       throw new InvalidArgumentError("duration must be positive");

@@ -6,7 +6,7 @@ export default interface InflatedComponent {
   id?: string;
   when?: string | true | false;
   bind?: ComponentBindVal[];
-  duration?: Number;
+  duration?: number;
   content?: string;
   contentType?: string;
   items?: InflatedComponent[];
