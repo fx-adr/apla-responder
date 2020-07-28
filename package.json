@@ -5,6 +5,7 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "repository": "https://fx-adr@github.com/fx-adr/apla-responder.git",
+  "homepage": "https://www.notion.so/APLA-Responder-7b524f8bb1be4696bfb45364d91aa310",
   "author": "Adam Rann <adam@fxdigital.uk>",
   "license": "MIT",
   "private": false,
