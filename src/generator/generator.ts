@@ -139,6 +139,10 @@ export default class Generator {
     }
   }
 
+  withReprompt(content: string) {
+    this.askResponseBuilder = this.askResponseBuilder.reprompt(content);
+  }
+
   protected getInternalDirective(): AplaRenderDocument {
     const datasources = {};
 
